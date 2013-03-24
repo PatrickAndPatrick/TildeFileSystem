@@ -5,3 +5,10 @@ c:\tilde\tilde\bin\EntityFramework.xml
 c:\tilde\tilde\obj\Debug\tilde.csprojResolveAssemblyReference.cache
 c:\tilde\tilde\obj\Debug\tilde.dll
 c:\tilde\tilde\obj\Debug\tilde.pdb
+C:\TildeFileSystem\TildeFileSystem\tilde\tilde\bin\tilde.dll
+C:\TildeFileSystem\TildeFileSystem\tilde\tilde\bin\tilde.pdb
+C:\TildeFileSystem\TildeFileSystem\tilde\tilde\bin\EntityFramework.dll
+C:\TildeFileSystem\TildeFileSystem\tilde\tilde\bin\EntityFramework.xml
+C:\TildeFileSystem\TildeFileSystem\tilde\tilde\obj\Debug\tilde.csprojResolveAssemblyReference.cache
+C:\TildeFileSystem\TildeFileSystem\tilde\tilde\obj\Debug\tilde.dll
+C:\TildeFileSystem\TildeFileSystem\tilde\tilde\obj\Debug\tilde.pdb
