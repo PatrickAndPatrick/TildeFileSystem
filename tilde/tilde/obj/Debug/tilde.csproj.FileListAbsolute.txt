@@ -12,3 +12,10 @@ C:\TildeFileSystem\TildeFileSystem\tilde\tilde\bin\EntityFramework.xml
 C:\TildeFileSystem\TildeFileSystem\tilde\tilde\obj\Debug\tilde.csprojResolveAssemblyReference.cache
 C:\TildeFileSystem\TildeFileSystem\tilde\tilde\obj\Debug\tilde.dll
 C:\TildeFileSystem\TildeFileSystem\tilde\tilde\obj\Debug\tilde.pdb
+C:\working\TildeFileSystem\tilde\tilde\bin\tilde.dll
+C:\working\TildeFileSystem\tilde\tilde\bin\tilde.pdb
+C:\working\TildeFileSystem\tilde\tilde\bin\EntityFramework.dll
+C:\working\TildeFileSystem\tilde\tilde\bin\EntityFramework.xml
+C:\working\TildeFileSystem\tilde\tilde\obj\Debug\tilde.csprojResolveAssemblyReference.cache
+C:\working\TildeFileSystem\tilde\tilde\obj\Debug\tilde.dll
+C:\working\TildeFileSystem\tilde\tilde\obj\Debug\tilde.pdb
