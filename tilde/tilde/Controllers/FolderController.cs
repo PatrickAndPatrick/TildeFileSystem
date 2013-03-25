@@ -9,11 +9,10 @@ namespace tilde.Controllers
 {
     public class FolderController : Controller
     {
-        //
-        // GET: /Folder/
-
         public ActionResult Index()
         {
+            //TestDataBaseThing();
+
             return View();
         }
 
@@ -48,6 +47,30 @@ namespace tilde.Controllers
         public ActionResult PopOutFileText(Guid fileId)
         {
             return PartialView(new FileModel());
+        }
+
+        private void TestDataBaseThing()
+        {
+
+            var databaseDoer = new DatabaseStuff();
+
+            var folder = new FolderModel
+            {
+                FolderId = Guid.NewGuid(),
+                Name = "FolderTime"
+            };
+
+            var files = new List<FileModel>();
+            files.Add(new FileModel
+            {
+                FileId = Guid.NewGuid(),
+                FolderId = folder.FolderId,
+                Name = "FileTime",
+                Text = "Read this!"
+            });
+
+
+            databaseDoer.SaveNewFolder(folder, files);
         }
 
     }
