@@ -4,4 +4,9 @@
 
 <h2>@ViewBag.Message</h2>
 <p>Specify a folder you want to upload below</p>
-<input>file path</input>
+
+@using (Html.BeginForm("Upload", "Folder", FormMethod.Post))
+{
+    <input type="text" id="upload" name="uploadInput" />          
+    <input type="submit" value = "send" />
+}
