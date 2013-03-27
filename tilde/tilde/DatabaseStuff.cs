@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Linq;
 using System.Web;
+using System.Web.Management;
 using tilde.Models;
 
 namespace tilde
@@ -68,15 +70,106 @@ namespace tilde
             return command;
         }
 
-        public IEnumerable<FileModel> GetFolderContents(Guid folderId)
+        public IEnumerable<FolderModel> GetFolderList()
         {
+            const string selectAllFolders = "SELECT FolderId, ParentId, Name FROM [Folders] ORDER BY Name";
+
+            var connection = new SqlConnection(ConnectionString);
+            var command = new SqlCommand(selectAllFolders, connection);
+
+            var resultTable = new DataTable();
+            try
+            {
+                using (connection)
+                {
+                    var adapter = new SqlDataAdapter { SelectCommand = command };
+                    adapter.Fill(resultTable);
+                }
+            }
+            catch (Exception exception)
+            {
+                throw new SqlExecutionException("Failed to get folders from database.", exception);
+            }
             
 
-            //get all files with folder = folderId
+            var folderList = new List<FolderModel>();
+            
+            using (var reader = resultTable.CreateDataReader())
+            {
+                while (reader.Read())
+                {
+                    try
+                    {
+                        var folder = new FolderModel()
+                            {
+                                FolderId = reader.GetGuid(0),
+                                Name = reader.GetString(2),
+                            };
 
+                        if (!reader.IsDBNull(1))
+                            folder.ParentId = reader.GetGuid(1);
 
-            return new List<FileModel>();
+                        folderList.Add(folder);
+                    }
+                    catch (Exception exception)
+                    {
+                        throw new Exception("Error paring Folder Data.", exception);
+                    }
+                }
+            }
+
+            return folderList;
         }
 
+        public IEnumerable<FileModel> GetFolderContents(Guid folderId)
+        {
+            const string selectFolder = "SELECT FileId, FolderId, Name, Text FROM [Files] WHERE FolderId=@folderId ORDER BY Name";
+
+            var connection = new SqlConnection(ConnectionString);
+            var command = new SqlCommand(selectFolder, connection);
+            command.Parameters.AddWithValue("@folderId", folderId);
+
+            var resultTable = new DataTable();
+            try
+            {
+                using (connection)
+                {
+                    var adapter = new SqlDataAdapter { SelectCommand = command };
+                    adapter.Fill(resultTable);
+                }
+            }
+            catch (Exception exception)
+            {
+                throw new SqlExecutionException("Failed to get files from database.", exception);
+            }
+            
+
+            var fileList = new List<FileModel>();
+            
+            using (var reader = resultTable.CreateDataReader())
+            {
+                while (reader.Read())
+                {
+                    try
+                    {
+                        var file = new FileModel
+                            {
+                                FileId = reader.GetGuid(0),
+                                FolderId = reader.GetGuid(1),
+                                Name = reader.GetString(2),
+                                Text = reader.GetString(3)
+                            };
+
+                        fileList.Add(file);
+                    }
+                    catch (Exception exception)
+                    {
+                        throw new Exception("Error paring File Data.", exception);
+                    }
+                }
+            }
+
+            return fileList;
+        }
     }
 }
