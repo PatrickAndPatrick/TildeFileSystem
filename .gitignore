@@ -1,0 +1,9 @@
+bin
+obj
+UpgradeLog.*
+_UpgradeReport_Files
+_Resharper.*
+*.csproj.user
+*.resharper.user
+*.resharper
+*.suo
