@@ -11,7 +11,7 @@ namespace tilde
         public IEnumerable<FileModel> allFilesExtractor(string folderPath){
             var folderId = Guid.NewGuid(); //the folder model info ultimately needs to be removed from this class and placed one level up.  This should be easy since all that is needed to create the folder model is it's path, which will be available a level up.
             var folderName = System.IO.Path.GetFileName(folderPath);
-            var allInfoList = new List<FileModel>;
+            var allInfoList = new List<FileModel>();
             foreach (var path in Directory.GetFiles(@folderPath))
             {
                 var fileId = Guid.NewGuid();

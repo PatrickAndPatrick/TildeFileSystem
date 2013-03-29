@@ -73,6 +73,7 @@
   <ItemGroup>
     <Compile Include="Controllers\FolderController.cs" />
     <Compile Include="DatabaseStuff.cs" />
+    <Compile Include="Business Logic\ExtractorClass.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

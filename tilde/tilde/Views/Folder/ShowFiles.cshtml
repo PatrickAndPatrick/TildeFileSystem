@@ -1,7 +1,7 @@
-﻿@model System.Collections.Generic.IEnumerable<tilde.Models.FolderModel>
-           
+﻿@model System.Collections.Generic.IEnumerable<tilde.Models.FileModel>
+
 @{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "ShowFiles";
 }
 
 <!DOCTYPE html>
@@ -17,10 +17,9 @@
 
     <h2>List Of Folders</h2>
     <ul>
-    @foreach (var folder in Model)
+    @foreach (var file in Model)
     {
-        <!--<li>Html.ActionLink(folder.Name, ShowFiles(folder.FolderId))</li>-->
-        <li>@folder.Name</li>
+        <li>@file</li>
     }
     </ul>
 
